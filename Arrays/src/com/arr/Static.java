@@ -5,7 +5,7 @@ public class Static {
 	public static void main(String[] args) {
 
 		int[] arr = { 12, 45, 67, 89, 56 };
-		String[] str = { "Arjun", "Kiran", "Om", "Pavan", "Ram" };
+		String[] str = { "Arjun", "Kiran", "Om", "Pavan", "Karan" };
 
 //		Static
 //		Without For Loop
