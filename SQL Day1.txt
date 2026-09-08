@@ -1,0 +1,315 @@
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| adminpanel         |
+| arjun_porpolio     |
+| complainboc_db     |
+| demodb             |
+| employeefinancedb  |
+| employeefinancedbs |
+| hospital_db        |
+| information_schema |
+| item_db            |
+| jobfinder          |
+| kdkcollege         |
+| microfinancedb     |
+| mysql              |
+| netflix_db         |
+| performance_schema |
+| publiccomplainbox  |
+| quickshow_db       |
+| restaurantdb       |
+| societywebbappdb   |
+| springboot_jdbcdb  |
+| sys                |
+| tb_item            |
+| tka                |
+| userreg_db         |
++--------------------+
+24 rows in set (0.01 sec)
+
+mysql> use tka;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_tka |
++---------------+
+| student       |
++---------------+
+1 row in set (0.01 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| StdId | int         | YES  |     | NULL    |       |
+| name  | varchar(50) | YES  |     | NULL    |       |
+| city  | varchar(50) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> select * from student;
++-------+-------+------+
+| StdId | name  | city |
++-------+-------+------+
+|     1 | Arjun | Pune |
++-------+-------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into student values(2,'Kiran','jalna');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-------+-------+-------+
+| StdId | name  | city  |
++-------+-------+-------+
+|     1 | Arjun | Pune  |
+|     2 | Kiran | jalna |
++-------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student(stdId, name, city) values(2,'latur','pavn');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-------+-------+-------+
+| StdId | name  | city  |
++-------+-------+-------+
+|     1 | Arjun | Pune  |
+|     2 | Kiran | jalna |
+|     2 | latur | pavn  |
++-------+-------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student values(3,'nsk','om');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-------+-------+-------+
+| StdId | name  | city  |
++-------+-------+-------+
+|     1 | Arjun | Pune  |
+|     2 | Kiran | jalna |
+|     2 | latur | pavn  |
+|     3 | nsk   | om    |
++-------+-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> update student set name = 'rahul', city = 'selu' where stdid = 2;
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from student;
++-------+-------+------+
+| StdId | name  | city |
++-------+-------+------+
+|     1 | Arjun | Pune |
+|     2 | rahul | selu |
+|     2 | rahul | selu |
+|     3 | nsk   | om   |
++-------+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> update student set name='kiran',city='jalna' where stdId = 3;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++-------+-------+-------+
+| StdId | name  | city  |
++-------+-------+-------+
+|     1 | Arjun | Pune  |
+|     2 | rahul | selu  |
+|     2 | rahul | selu  |
+|     3 | kiran | jalna |
++-------+-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> delete from student where stdid = 2;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> select * from student;
++-------+-------+-------+
+| StdId | name  | city  |
++-------+-------+-------+
+|     1 | Arjun | Pune  |
+|     3 | kiran | jalna |
++-------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table user(userId int primary key, usname varchar(50), password varchar(50));
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> select * from user;
+Empty set (0.01 sec)
+
+mysql> desc user;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| userId   | int         | NO   | PRI | NULL    |       |
+| usname   | varchar(50) | YES  |     | NULL    |       |
+| password | varchar(50) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> show tables
+    -> show tables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show tables' at line 2
+mysql> show tabales;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabales' at line 1
+mysql> show tables;
++---------------+
+| Tables_in_tka |
++---------------+
+| student       |
+| user          |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from user;
+Empty set (0.00 sec)
+
+mysql> desc user;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| userId   | int         | NO   | PRI | NULL    |       |
+| usname   | varchar(50) | YES  |     | NULL    |       |
+| password | varchar(50) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into user(1, 'arjun', 'arjun@124');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1, 'arjun', 'arjun@124')' at line 1
+mysql> insert into user values(1, 'arjun', 'arjun@124');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from user;
++--------+--------+-----------+
+| userId | usname | password  |
++--------+--------+-----------+
+|      1 | arjun  | arjun@124 |
++--------+--------+-----------+
+1 row in set (0.00 sec)
+
+mysql> insert into user( 'arjun', 'arjun@124');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''arjun', 'arjun@124')' at line 1
+mysql> insert into user(1 'arjun', 'arjun@124');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1 'arjun', 'arjun@124')' at line 1
+mysql> insert into user values(1, 'arjun', 'arjun@124');
+ERROR 1062 (23000): Duplicate entry '1' for key 'user.PRIMARY'
+mysql> insert into user values('arjun', 'arjun@124');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into user values(1, 'arjun@124');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into user values(1, 'arjun', 'arjun@124');
+ERROR 1062 (23000): Duplicate entry '1' for key 'user.PRIMARY'
+mysql> insert into user values(2, 'arjun', 'arjun@124');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from user;
++--------+--------+-----------+
+| userId | usname | password  |
++--------+--------+-----------+
+|      1 | arjun  | arjun@124 |
+|      2 | arjun  | arjun@124 |
++--------+--------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> insert into user(userId, username, password) values(1, 'arjun', 'arjun@124');
+ERROR 1054 (42S22): Unknown column 'username' in 'field list'
+mysql> insert into user(userId, username, password) values(2, 'arjun', 'arjun@124');
+ERROR 1054 (42S22): Unknown column 'username' in 'field list'
+mysql> insert into user(userId, usrname, password) values(2, 'arjun', 'arjun@124');
+ERROR 1054 (42S22): Unknown column 'usrname' in 'field list'
+mysql> insert into user(userId, usname, password) values(2, 'arjun', 'arjun@124');
+ERROR 1062 (23000): Duplicate entry '2' for key 'user.PRIMARY'
+mysql> insert into user(userId, usname, password) values(3, 'arjun', 'arjun@124');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from user;
++--------+--------+-----------+
+| userId | usname | password  |
++--------+--------+-----------+
+|      1 | arjun  | arjun@124 |
+|      2 | arjun  | arjun@124 |
+|      3 | arjun  | arjun@124 |
++--------+--------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> insert into user(userId, usname, password) values('arjun', 'arjun@124');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into user(userId, usname, password) values(4, 'arjun@124');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into user(userId, usname, password) values(4,'kiran' 'arjun@124');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into user(userId, usname, password) values(4,'kiran', 'arjun@124');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into user(userId, usname, password) values(4,'kiran', 'arjun@124');
+ERROR 1062 (23000): Duplicate entry '4' for key 'user.PRIMARY'
+mysql> select * from user;
++--------+--------+-----------+
+| userId | usname | password  |
++--------+--------+-----------+
+|      1 | arjun  | arjun@124 |
+|      2 | arjun  | arjun@124 |
+|      3 | arjun  | arjun@124 |
+|      4 | kiran  | arjun@124 |
++--------+--------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> insert into user(userId, usname, password) values(4,'kiran');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into user(userId, usname, password) values(4,'kiran', 'null');
+ERROR 1062 (23000): Duplicate entry '4' for key 'user.PRIMARY'
+mysql> insert into user(userId, usname, password) values(5,'kiran', 'null');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from user;
++--------+--------+-----------+
+| userId | usname | password  |
++--------+--------+-----------+
+|      1 | arjun  | arjun@124 |
+|      2 | arjun  | arjun@124 |
+|      3 | arjun  | arjun@124 |
+|      4 | kiran  | arjun@124 |
+|      5 | kiran  | null      |
++--------+--------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> create table student(stdId int primary key, name varchar(50) Not null, city varchar(50), email varchar(60) not null);
+ERROR 1050 (42S01): Table 'student' already exists
+mysql> create table studentInfo(stdId int primary key, name varchar(50) Not null, city varchar(50), email varchar(60) not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from studentInfo;
+Empty set (0.00 sec)
+
+mysql> desc studentInfo;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| stdId | int         | NO   | PRI | NULL    |       |
+| name  | varchar(50) | NO   |     | NULL    |       |
+| city  | varchar(50) | YES  |     | NULL    |       |
+| email | varchar(60) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> ^A
